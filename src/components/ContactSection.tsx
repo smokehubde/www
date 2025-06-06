@@ -75,7 +75,7 @@ const ContactSection = () => {
 
           <div className="mt-12 text-center">
             <p className="text-muted-foreground">
-              © 2024 Michael Hense. Mit ❤️ erstellt.
+              © 2024 Michael. Mit ❤️ erstellt.
             </p>
           </div>
         </div>

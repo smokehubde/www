@@ -60,9 +60,6 @@ const HeroSection = () => {
           
           <h1 className="text-6xl md:text-8xl font-bold mb-4 relative">
             Michael
-            <span className="gradient-text block text-shadow-glow animate-glow">
-              Hense
-            </span>
           </h1>
           
           <div className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
