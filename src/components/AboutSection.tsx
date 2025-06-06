@@ -1,54 +1,113 @@
 
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
+
 const AboutSection = () => {
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation();
+  const { elementRef: cardRef, isVisible: cardVisible } = useScrollAnimation();
+
   return (
-    <section id="about" className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-20 bg-secondary/30 relative overflow-hidden">
+      {/* Background ASCII art pattern */}
+      <div className="absolute inset-0 opacity-5 font-mono text-xs leading-3 pointer-events-none overflow-hidden">
+        <div className="animate-float">
+          {Array.from({ length: 50 }, (_, i) => (
+            <div key={i} style={{ transform: `translateY(${i * 20}px)` }}>
+              {"·—+*#@%=·—+*#@%=·—+*#@%=·—+*#@%=·—+*#@%=·—+*#@%=·—+*#@%=·—+*#@%="}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-4xl mx-auto">
-          <div className="animate-slide-up">
+          <div 
+            ref={titleRef}
+            className={`transition-all duration-1000 ${
+              titleVisible 
+                ? "opacity-100 transform-none" 
+                : "opacity-0 translate-y-20"
+            }`}
+          >
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center">
               Über <span className="gradient-text">mich</span>
             </h2>
+          </div>
             
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Hallo! Ich bin Michael Hense, und ich freue mich, dass du den Weg 
-                  zu meiner persönlichen Website gefunden hast.
-                </p>
-                
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Hier teile ich meine Gedanken, Projekte und Leidenschaften mit der Welt. 
-                  Jeder Mensch hat eine einzigartige Geschichte zu erzählen, und das ist meine.
-                </p>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div 
+              ref={contentRef}
+              className={`space-y-6 transition-all duration-1000 delay-300 ${
+                contentVisible 
+                  ? "opacity-100 transform-none" 
+                  : "opacity-0 -translate-x-20"
+              }`}
+            >
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Hallo! Ich bin <span className="text-primary font-semibold">Michael Hense</span>, 
+                und ich freue mich, dass du den Weg zu meiner persönlichen Website gefunden hast.
+              </p>
+              
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Hier teile ich meine <span className="gradient-text">Gedanken</span>, 
+                <span className="gradient-text"> Projekte</span> und 
+                <span className="gradient-text"> Leidenschaften</span> mit der Welt. 
+                Jeder Mensch hat eine einzigartige Geschichte zu erzählen, und das ist meine.
+              </p>
 
-                <div className="flex flex-wrap gap-3 mt-8">
-                  {[
-                    "Kreativität",
-                    "Innovation",
-                    "Authentizität",
-                    "Leidenschaft",
-                    "Wachstum"
-                  ].map((trait) => (
-                    <span
-                      key={trait}
-                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium border border-primary/20"
-                    >
-                      {trait}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex flex-wrap gap-3 mt-8">
+                {[
+                  "Kreativität",
+                  "Innovation", 
+                  "Authentizität",
+                  "Leidenschaft",
+                  "Wachstum"
+                ].map((trait, index) => (
+                  <span
+                    key={trait}
+                    className={`bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium border border-primary/20 hover:bg-primary/20 transition-all duration-300 cursor-default hover:scale-105 ${
+                      contentVisible ? "animate-fade-in" : "opacity-0"
+                    }`}
+                    style={{ animationDelay: `${800 + index * 100}ms` }}
+                  >
+                    {trait}
+                  </span>
+                ))}
               </div>
 
-              <div className="relative">
-                <div className="bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-2xl p-8 backdrop-blur-sm border border-primary/10">
-                  <div className="text-center">
-                    <div className="w-32 h-32 bg-gradient-to-br from-primary to-emerald-500 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl font-bold text-primary-foreground">
-                      MH
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">Michael Hense</h3>
-                    <p className="text-muted-foreground">
-                      Immer auf der Suche nach neuen Möglichkeiten
-                    </p>
+              {/* Code-style quote */}
+              <div className="mt-8 font-mono text-sm text-primary/80 bg-secondary/50 p-4 rounded-lg border border-primary/20">
+                <span className="text-muted-foreground">// Mein Motto:</span><br />
+                <span className="text-primary">console.log</span>
+                <span className="text-muted-foreground">(</span>
+                <span className="text-emerald-400">"Immer bereit für neue Abenteuer!"</span>
+                <span className="text-muted-foreground">);</span>
+              </div>
+            </div>
+
+            <div 
+              ref={cardRef}
+              className={`relative transition-all duration-1000 delay-500 ${
+                cardVisible 
+                  ? "opacity-100 transform-none" 
+                  : "opacity-0 translate-x-20"
+              }`}
+            >
+              <div className="bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-2xl p-8 backdrop-blur-sm border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 animate-glow">
+                <div className="text-center">
+                  <div className="w-32 h-32 bg-gradient-to-br from-primary to-emerald-500 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl font-bold text-primary-foreground animate-pulse-slow hover:animate-spin transition-all duration-500">
+                    MH
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold mb-2">Michael Hense</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Immer auf der Suche nach neuen Möglichkeiten
+                  </p>
+                  
+                  {/* Status indicator */}
+                  <div className="flex items-center justify-center gap-2 font-mono text-xs">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span className="text-primary">STATUS: READY_TO_CREATE</span>
                   </div>
                 </div>
               </div>

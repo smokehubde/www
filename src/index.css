@@ -47,6 +47,7 @@
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
   }
 
   html {
@@ -74,21 +75,45 @@
   .animate-slide-up {
     animation: slideUp 0.8s ease-out forwards;
   }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-typewriter {
+    animation: typewriter 3s steps(20) infinite;
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 10px hsl(142, 76%, 36%), 0 0 20px hsl(142, 76%, 36%), 0 0 30px hsl(142, 76%, 36%);
+  }
+
+  .parallax-scroll {
+    transform: translateY(var(--scroll-y, 0));
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(2deg); 
+  }
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(30px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -100,5 +125,95 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px hsl(142, 76%, 36%);
+  }
+  to {
+    box-shadow: 0 0 30px hsl(142, 76%, 36%), 0 0 40px hsl(142, 76%, 36%);
+  }
+}
+
+@keyframes typewriter {
+  0%, 50% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Scroll-triggered animations */
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes revealLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-up {
+  animation: revealUp 1s ease-out forwards;
+}
+
+.reveal-left {
+  animation: revealLeft 1s ease-out forwards;
+}
+
+.reveal-right {
+  animation: revealRight 1s ease-out forwards;
+}
+
+/* Matrix-style text effect */
+.matrix-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, hsl(142, 76%, 36%), transparent);
+  animation: matrix-sweep 3s infinite;
+}
+
+@keyframes matrix-sweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
   }
 }
