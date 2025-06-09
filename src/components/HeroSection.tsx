@@ -20,7 +20,12 @@ const HeroSection = () => {
     }
   };
 
-  const creativeWords = ["Leidenschaftlich", "Visionär", "Innovativ", "Authentisch"];
+  const descriptorWords = [
+    "Strategisch",
+    "Kommunikativ",
+    "Ergebnisorientiert",
+    "Kundenfokussiert"
+  ];
 
   return (
     <section
@@ -46,30 +51,33 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 text-center relative z-10">
         <Modern3DCard className="animate-fade-in">
           <div className="mb-4 font-mono text-sm text-primary opacity-70">
-            // Willkommen in meiner digitalen Welt
+            // Willkommen in meiner Vertriebswelt
           </div>
           
           <h1 className="text-6xl md:text-8xl font-bold mb-4 relative">
             Michael <span className="font-mono text-primary/60">{censoredSurname}</span>
           </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground mb-6">
+            Sales Leader – Wachstum durch klare Kommunikation & strategisches Marketing
+          </p>
           
           <div className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
             <span className="matrix-text">
               Ich bin{" "}
               <AnimatedText 
-                words={creativeWords}
+                words={descriptorWords}
                 className="gradient-text font-semibold"
                 speed={3000}
               />
             </span>
             <br />
-            <span className="text-primary">Entdecke</span> meine Welt der Möglichkeiten.
+            <span className="text-primary">Gestalten wir</span> gemeinsam Wachstum.
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <GlassmorphismCard className="px-6 py-3">
               <span className="font-mono text-sm text-primary animate-glow">
-                {`{ authentisch: true, kreativ: false, innovativ: true }`}
+                {`{ kommunikativ: true, strategisch: true, kundenfokussiert: true }`}
               </span>
             </GlassmorphismCard>
           </div>

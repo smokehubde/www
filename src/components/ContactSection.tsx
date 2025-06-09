@@ -1,5 +1,5 @@
 
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Linkedin } from "lucide-react";
 import { useCensoredText } from "../hooks/useCensoredText";
 import Modern3DCard from "./Modern3DCard";
 import GlassmorphismCard from "./GlassmorphismCard";
@@ -24,7 +24,7 @@ const ContactSection = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="grid md:grid-cols-4 gap-8 mb-12">
               {[
                 {
                   icon: Mail,
@@ -43,6 +43,12 @@ const ContactSection = () => {
                   title: "Standort",
                   content: "Deutschland",
                   href: "#",
+                },
+                {
+                  icon: Linkedin,
+                  title: "LinkedIn",
+                  content: "Profil",
+                  href: "https://www.linkedin.com/in/hense-michael/",
                 },
               ].map((contact, index) => (
                 <Modern3DCard key={contact.title}>
