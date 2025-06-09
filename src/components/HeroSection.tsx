@@ -2,9 +2,16 @@
 import { ArrowDown } from "lucide-react";
 import AnimatedText from "./AnimatedText";
 import { useParallaxScroll } from "../hooks/useScrollAnimation";
+import { useCensoredText } from "../hooks/useCensoredText";
+import Modern3DCard from "./Modern3DCard";
+import GlassmorphismCard from "./GlassmorphismCard";
 
 const HeroSection = () => {
   const scrollY = useParallaxScroll();
+  const censoredSurname = useCensoredText({ 
+    originalText: "Hense", 
+    animationSpeed: 150 
+  });
 
   const scrollToAbout = () => {
     const element = document.getElementById("about");
@@ -13,7 +20,7 @@ const HeroSection = () => {
     }
   };
 
-  const creativeWords = ["Leidenschaftlich", "Kreativ", "Innovativ", "Authentisch"];
+  const creativeWords = ["Leidenschaftlich", "Visionär", "Innovativ", "Authentisch"];
 
   return (
     <section
@@ -27,39 +34,23 @@ const HeroSection = () => {
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
       ></div>
-      
-      {/* Animated floating particles */}
-      <div className="absolute inset-0">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-primary/30 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`,
-            }}
-          ></div>
-        ))}
-      </div>
 
       {/* ASCII-style decorative elements */}
       <div className="absolute top-10 left-10 font-mono text-primary/20 text-xs animate-pulse-slow">
-        {`>>> MICHAEL_HENSE.EXE`}
+        {`>>> MICHAEL_${censoredSurname}.EXE`}
       </div>
       <div className="absolute bottom-10 right-10 font-mono text-primary/20 text-xs animate-pulse-slow">
         {`[STATUS: ONLINE]`}
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="animate-fade-in">
+        <Modern3DCard className="animate-fade-in">
           <div className="mb-4 font-mono text-sm text-primary opacity-70">
             // Willkommen in meiner digitalen Welt
           </div>
           
           <h1 className="text-6xl md:text-8xl font-bold mb-4 relative">
-            Michael
+            Michael <span className="font-mono text-primary/60">{censoredSurname}</span>
           </h1>
           
           <div className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
@@ -76,9 +67,11 @@ const HeroSection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <span className="font-mono text-sm text-muted-foreground bg-secondary px-4 py-2 rounded-full border border-primary/20 animate-glow">
-              {`{ authentisch: true, kreativ: true, innovativ: true }`}
-            </span>
+            <GlassmorphismCard className="px-6 py-3">
+              <span className="font-mono text-sm text-primary animate-glow">
+                {`{ authentisch: true, kreativ: false, innovativ: true }`}
+              </span>
+            </GlassmorphismCard>
           </div>
 
           {/* Typing effect indicator */}
@@ -87,7 +80,7 @@ const HeroSection = () => {
               _ready_to_explore()
             </span>
           </div>
-        </div>
+        </Modern3DCard>
 
         <button
           onClick={scrollToAbout}
