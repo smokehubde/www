@@ -1,27 +1,27 @@
 
-import { Lightbulb, Target, Users, Zap } from "lucide-react";
+import { Target, Users, Zap, TrendingUp } from "lucide-react";
 
 const SkillsSection = () => {
   const skills = [
     {
-      icon: Lightbulb,
-      title: "Kreativität",
-      description: "Innovative Lösungen finden und kreative Ansätze entwickeln",
+      icon: TrendingUp,
+      title: "Vertrieb",
+      description: "Strategien entwickeln und Umsatzwachstum erzielen",
     },
     {
       icon: Target,
-      title: "Zielorientierung",
-      description: "Fokussiert arbeiten und Ziele konsequent verfolgen",
+      title: "Geschäftsentwicklung",
+      description: "Neue Märkte erschließen und Chancen identifizieren",
     },
     {
       icon: Users,
-      title: "Teamwork",
-      description: "Erfolgreich in Teams arbeiten und andere motivieren",
+      title: "Kundenbindung",
+      description: "Langfristige Beziehungen zu Kunden aufbauen",
     },
     {
       icon: Zap,
-      title: "Energie",
-      description: "Mit Begeisterung und Energie an Projekte herangehen",
+      title: "Kommunikation",
+      description: "Klare Botschaften intern und extern vermitteln",
     },
   ];
 

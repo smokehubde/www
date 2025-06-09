@@ -17,7 +17,7 @@ const AboutSection = () => {
             Über mich
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Lerne mehr über meine Leidenschaft für Innovation und Authentizität
+            Lerne mehr über meine vertriebliche Leidenschaft und Strategie
           </p>
         </div>
 
@@ -26,36 +26,36 @@ const AboutSection = () => {
             <div className="space-y-6">
               <p className="text-lg leading-relaxed">
                 Hallo! Ich bin <span className="text-primary font-semibold">Michael {censoredSurname}</span>,
-                ein leidenschaftlicher Entwickler und kreativer Problemlöser aus Deutschland.
+                Sales Leader aus Bochum. Mein Fokus liegt auf Wachstum durch klare Kommunikation
+                und strategisches Marketing.
               </p>
-              
+
               <p className="text-muted-foreground leading-relaxed">
-                Mit über 5 Jahren Erfahrung in der Softwareentwicklung bringe ich 
-                Ideen zum Leben und schaffe digitale Erlebnisse, die sowohl funktional 
-                als auch ästhetisch ansprechend sind.
+                Bei Darkside Corp. konnte ich Umsatzwachstum steigern, die Kundenzufriedenheit verbessern
+                und gemeinsam mit meinem Team erfolgreiche Marketingkampagnen umsetzen.
               </p>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold mb-2">Was mich antreibt:</h3>
+                <h3 className="text-xl font-semibold mb-2">Meine Stärken:</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-primary rounded-full"></span>
-                    Innovative Lösungen entwickeln
+                    Umsatzwachstum erzielen
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-primary rounded-full"></span>
-                    Benutzerfreundliche Interfaces gestalten
+                    Kundenbeziehungen stärken
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-primary rounded-full"></span>
-                    Kontinuierliches Lernen und Wachstum
+                    Teams motivieren und führen
                   </li>
                 </ul>
               </div>
 
               <GlassmorphismCard className="p-4">
                 <p className="font-mono text-sm text-center">
-                  "Code ist Poesie in Bewegung"
+                  "Vertrieb ist Kommunikation mit Herz"
                 </p>
               </GlassmorphismCard>
             </div>
