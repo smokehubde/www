@@ -1,4 +1,5 @@
 
+import { useEffect, useRef } from "react";
 import { useCensoredText } from "../hooks/useCensoredText";
 import GlassmorphismCard from "./GlassmorphismCard";
 import Modern3DCard from "./Modern3DCard";
@@ -6,65 +7,67 @@ import Modern3DCard from "./Modern3DCard";
 const AboutSection = () => {
   const censoredSurname = useCensoredText({ 
     originalText: "Hense", 
-    animationSpeed: 150 
+    animationSpeed: 180 
   });
 
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-20 relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Über <span className="gradient-text">mich</span>
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Lerne die Person hinter den Ideen kennen
-            </p>
-          </div>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">
+            Über mich
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Lerne mehr über meine Leidenschaft für Innovation und Authentizität
+          </p>
+        </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <Modern3DCard>
-              <GlassmorphismCard className="p-8">
-                <div className="space-y-6">
-                  <p className="text-lg leading-relaxed">
-                    Hallo! Ich bin <span className="text-primary font-semibold">Michael {censoredSurname}</span>,
-                    ein leidenschaftlicher Mensch, der es liebt, neue Wege zu erkunden und 
-                    innovative Lösungen zu entwickeln.
-                  </p>
-                  
-                  <p className="text-muted-foreground leading-relaxed">
-                    Meine Reise ist geprägt von Neugier, Kreativität und dem ständigen 
-                    Streben nach Verbesserung. Ich glaube daran, dass die besten Ideen 
-                    entstehen, wenn man mutig genug ist, neue Perspektiven zu erkunden.
-                  </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Text Content */}
+          <Modern3DCard className="order-2 lg:order-1">
+            <div className="space-y-6">
+              <p className="text-lg leading-relaxed">
+                Hallo! Ich bin <span className="text-primary font-semibold">Michael {censoredSurname}</span>,
+                ein leidenschaftlicher Entwickler und kreativer Problemlöser aus Deutschland.
+              </p>
+              
+              <p className="text-muted-foreground leading-relaxed">
+                Mit über 5 Jahren Erfahrung in der Softwareentwicklung bringe ich 
+                Ideen zum Leben und schaffe digitale Erlebnisse, die sowohl funktional 
+                als auch ästhetisch ansprechend sind.
+              </p>
 
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold mb-4">Meine Werte</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {[
-                        { label: "Authentizität", value: "Echte Verbindungen schaffen" },
-                        { label: "Innovation", value: "Grenzen überschreiten" },
-                        { label: "Qualität", value: "Exzellenz in allem" },
-                        { label: "Leidenschaft", value: "Mit Herz dabei sein" }
-                      ].map((item, index) => (
-                        <div 
-                          key={item.label}
-                          className="p-4 bg-primary/5 rounded-lg border border-primary/10 hover:border-primary/30 transition-all duration-300"
-                        >
-                          <h4 className="font-semibold text-primary mb-1">{item.label}</h4>
-                          <p className="text-sm text-muted-foreground">{item.value}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold mb-2">Was mich antreibt:</h3>
+                <ul className="space-y-2 text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
+                    Innovative Lösungen entwickeln
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
+                    Benutzerfreundliche Interfaces gestalten
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-primary rounded-full"></span>
+                    Kontinuierliches Lernen und Wachstum
+                  </li>
+                </ul>
+              </div>
+
+              <GlassmorphismCard className="p-4">
+                <p className="font-mono text-sm text-center">
+                  "Code ist Poesie in Bewegung"
+                </p>
               </GlassmorphismCard>
-            </Modern3DCard>
+            </div>
+          </Modern3DCard>
 
-            <Modern3DCard>
-              <GlassmorphismCard className="p-4 bg-black/20">
-                <div className="font-mono text-xs text-primary/60 overflow-hidden whitespace-pre leading-tight">
-{`                                         %**=::::::=+*                                                
+          {/* ASCII Art - Made Smaller */}
+          <div className="order-1 lg:order-2 flex justify-center">
+            <div className="relative">
+              <pre className="font-mono text-primary/60 text-[2px] md:text-[3px] leading-[0.2] md:leading-[0.3] select-none animate-pulse-slow whitespace-pre overflow-hidden">
+{`                                        %**=::::::=+*                                                
                                       %*=:::......::-*%                                              
                                     %*=:....::::::...-+#                                             
                                    #=-....:::::::::...:+                                             
@@ -247,7 +250,7 @@ const AboutSection = () => {
     #=--==-:. -+***********+++++++===--=++++++++***********++++++++++===-----:::*                    
      #+-=---: -+***********++++++++++===+++++++++++*******+*+++++++++===-----::-#                    
        #+----.-++************+++=+++++=-++++++++++++******+++++++++++===-----::=%                    
-        %*--==-++**************++=++++=-=++++***++++******+++++++++++==------::=%                    
+        %*--==-++**************++=++++=-=++++***++++******+++++++++++===-----::=%                    
           #+##+++****************+==+++==++++*************+++++++++++==------::=%                    
               +++****************++===+=-=++++************+++++++++++==------::=%                    
               *++***********++++++++====--+++++***********+++++++++++==------::=%                    
@@ -260,7 +263,7 @@ const AboutSection = () => {
                #*++***********+++***+=====-:+++++****++****+++++++======-----:-*                     
                %++++***************+===+==-:+++++++**+++***+++++++======-------*                     
                 *+++************++===+++==-:-++++++++++****+++++++======-------*                     
-                *+++**********++++++++++==-::++++**++++****+++++++======-----:-#                     
+                *+++**********++++++++++==-::++++**++++****+++++++======-------*                     
                 #+++********+++++++++=====-::=++++***++****++++++=======-----:-#                     
                 %*++*******+++++++++==++==--:-++++*********++++++=======--:--:-#                     
                  +++********+*+++++++++====-::++*+++********+++++=======--:--:-*                     
@@ -288,7 +291,7 @@ const AboutSection = () => {
                     *+++++++++++++++++===--::#     %*++********++++====-------#                      
                     *+++++++++++++++++==---::#      *++++***+**+++++===-------#                      
                     *+++++++++++++++++==-----#      *++++**++**+++++===-------+                      
-                    *+++++++++++++++====-----#      #++++**++**+++++====------+                      
+                    *+++++++++++++++====-----#      #++++**++**+++++===-------+                      
                     #*+++++++++++++=====-----#      %++++*+++**+++++=====-----+                      
                     %*+++++++++++++=====-:---#       *+***++++*+++=======----:+                      
                     %*++++++++++++++++==-:::-#       #+**++++**+++=======----:+                      
@@ -305,13 +308,14 @@ const AboutSection = () => {
                       #*+=+******+++++++=---:+         ++***+++++++++++++==---:=%                    
                       #++++++******++++++---:+         ++**++=======+++++==----=%                    
                       #+++=++++*****+++++---:+         ***++==========+++=-----=%                    
-                      #+=====+++******+++----+         #**+=++++++=+++++=--==-:=%                    
+                      #++=====+++******+++----+         #**+=++++++=+++++=--==-:=%                    
                       #++=====++++****+++---:+         %*+++++++**+****+=-===-:=%                    
                       #++++++===++++++++==--:+         %**++*+*********+=-===-:=%                    
                       #+++++++++=+++++++==---+         #***************+-===---=%                    
-                      %*+++++++++++++++===---+         #+*************+=====---=%                    
-                       *+++++++++++++++==----+         #++***********++====----=%                    
-                       *++++++++***++++==---:+         %*++*********++=====-:---#                    
+                      #+++++++++++++++++===---+         #+*************+=====---=%                    
+                      %*+++++++++++++++===---+         #++***********++====----=%                    
+                       *+++++++++++++++==----+         %*++*********++=====-:---#                    
+                       *++++++++***++++==---:+         %*++*********++====-----:*                    
                        *+++++++*****+++===--:+          #+++*******+++=====-----*                    
                        *+++++*******+++===--:+          *+++*******+++====-----:*                    
                        ++++++******+++====--:+          *++++******+++++==---=-:*                    
@@ -357,27 +361,15 @@ const AboutSection = () => {
     *---:::::::::::::...                ..+                #------::::::::::.:#                      
    %=:------:::::::....              ..:-+#                #=----------:::::.:+                      
    #-:-----:::::.....           .:::-+**#                  #=----------:::::::=                      
-   #-....:::::::......       .:--***#%                     #=----------::::...=                      
+   #-....:::::::......       .:--***#%                     #=----------::::.. =                      
     *===-------...      ..---+###                          #-:---------::::.. =                      
      %%%%%%%%%#**++++++==+###%                             #=:--------:::... .*                      
                %%%%%%%                                     %+:::::::::::.....=#                      
                                                             #=--::::::..::::=#                       
                                                              ##+==++++++*###%`}
-                </div>
-              </GlassmorphismCard>
-            </Modern3DCard>
-          </div>
-
-          <div className="mt-16 text-center">
-            <GlassmorphismCard className="p-8">
-              <h3 className="text-2xl font-bold mb-4">
-                Bereit für das nächste <span className="gradient-text">Abenteuer</span>
-              </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Jeder Tag bietet neue Möglichkeiten zu lernen, zu wachsen und 
-                etwas Bedeutsames zu schaffen. Lass uns gemeinsam die Zukunft gestalten.
-              </p>
-            </GlassmorphismCard>
+              </pre>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-50 animate-pulse"></div>
+            </div>
           </div>
         </div>
       </div>
